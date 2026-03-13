@@ -1,6 +1,8 @@
+import { useNavigate } from 'react-router-dom'
 import footerLogoSrc from '../assets/Footer-logo.svg'
 
 export default function Footer() {
+  const navigate = useNavigate()
   const year = new Date().getFullYear()
 
   return (
@@ -12,7 +14,7 @@ export default function Footer() {
               href="/"
               className="foot-logo"
               aria-label="AiGENiQ — Home"
-              onClick={e => { e.preventDefault(); window.location.reload() }}
+              onClick={e => { e.preventDefault(); navigate('/'); setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 0) }}
             >
               <img
                 src={footerLogoSrc}
