@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useHeroCarousel, MESSAGES } from '../hooks/useHeroCarousel'
 import StatsCard from './StatsCard'
 
@@ -41,8 +42,8 @@ export default function Hero() {
           </p>
 
           <div className="hero-ctas" data-reveal data-delay="3">
-            <a href="#cta" className="btn-dark">Book a Clarity Call</a>
-            <a href="#how-we-work" className="btn-ghost">See How We Work &rarr;</a>
+            <a href="#cta" className="btn-dark">BOOK A CLARITY CALL</a>
+            <Link to="/how-we-work" className="btn-ghost">SEE HOW WE WORK →</Link>
           </div>
         </div>
 

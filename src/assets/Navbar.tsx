@@ -4,11 +4,11 @@ import { useMobileNav } from '../hooks/useMobileNav'
 import logoSrc from '../assets/Logo.svg'
 
 const NAV_LINKS = [
-  { label: 'Benefits',    href: '#why-aigeniq' },
-  { label: 'Resources',   href: '#resources'   },
+  { label: 'How We Work',    href: '#why-aigeniq' },
   { label: 'Case Studies',href: '#proof'        },
-  { label: 'Insights',    href: '#insights'     },
   { label: 'About',       href: '#who-its-for'  },
+  { label: 'Insights',    href: '#insights'     },
+
 ]
 
 export default function Navbar() {

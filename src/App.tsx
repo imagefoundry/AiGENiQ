@@ -1,11 +1,12 @@
 import { Routes, Route } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
+import HowWeWorkPage from './pages/HowWeWorkPage'
 
 export default function App() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
-      {/* Add more routes here as you build out the site */}
+      {/* <Route path="/how-we-work" element={<HowWeWorkPage />} /> */}
     </Routes>
   )
 }
