@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 const MESSAGES = [
   "You know AI matters — you just haven't had time to act on it.",
   'Get your business AI-ready before your competitors do.',
-  'Leadership aligned. Teams actually using it. Automation that earns its place.',
+"Leadership aligned. Teams on board. Automation that works.",
   'Starting with clarity, not code.',
 ]
 

@@ -6,15 +6,65 @@ import Navbar from '../components/Navbar'
 import footerLogoSrc from '../assets/Footer-logo.svg'
 
 const NAV_ITEMS = [
-  { num: '01', label: 'The process',            desc: 'Four steps. What happens at each one.', href: 'process'  },
-  { num: '02', label: "What you'll have",        desc: 'The outcomes you can expect.',          href: 'outcomes' },
-  { num: '03', label: 'The work so far',         desc: "What we've built and how.",             href: 'proof'    },
-  { num: '04', label: 'Start the conversation',  desc: '25 minutes. No obligation.',            href: 'cta'      },
+  {
+    num: '01', label: 'The process', desc: 'Four steps. What happens at each one.', href: 'process',
+    popup: { heading: 'Four steps. Zero surprises.', bullets: ['Assess — where AI genuinely helps', 'Plan — 90-day roadmap you can act on', 'Enable — your team using it for real', 'Implement — build only what earns its place'] },
+  },
+  {
+    num: '02', label: "What you'll have", desc: 'The outcomes you can expect.', href: 'outcomes',
+    popup: { heading: 'Concrete outcomes. Not deliverables.', bullets: ['A team using AI day-to-day — not just leadership', 'Automations you own completely', 'Time back in the places that matter most'] },
+  },
+  {
+    num: '03', label: 'The work so far', desc: "What we've built and how.", href: 'proof',
+    popup: { heading: 'Real results. Real businesses.', bullets: ['70% faster stock listing for a commercial vehicle dealer', 'Two AI systems live inside our own business', '3+ years hands-on since tools became genuinely usable'] },
+  },
+  {
+    num: '04', label: 'Start the conversation', desc: '25 minutes. No obligation.', href: 'cta',
+    popup: { heading: '25 minutes. Honest advice.', bullets: ["We'll tell you where AI earns its place", 'Useful whether you work with us or not', "Tell us where you are — we'll meet you there"] },
+  },
 ]
+
+const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+
+function ScrambleLabel({ text, trigger }: { text: string; trigger: number }) {
+  const [out, setOut] = useState(text)
+  useEffect(() => {
+    if (!trigger) return
+    let raf: number
+    let t0: number | null = null
+    const duration = 650
+    const tick = (ts: number) => {
+      if (!t0) t0 = ts
+      const p = Math.min((ts - t0) / duration, 1)
+      setOut(
+        text.split('').map((ch, i) => {
+          if (" '.,—-".includes(ch)) return ch
+          if (p > i / text.length + 0.08) return ch
+          return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]
+        }).join('')
+      )
+      if (p < 1) raf = requestAnimationFrame(tick)
+      else setOut(text)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [trigger])
+  return <>{out}</>
+}
 
 export default function HowWeWorkPage() {
   const [activeSection, setActiveSection] = useState('')
   const [passedSections, setPassedSections] = useState<Set<string>>(new Set())
+  const [scrambleTriggers, setScrambleTriggers] = useState<Record<string, number>>({})
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
+
+  useEffect(() => {
+    NAV_ITEMS.forEach((item, i) => {
+      setTimeout(() => {
+        setScrambleTriggers(prev => ({ ...prev, [item.href]: 1 }))
+      }, 300 + i * 160)
+    })
+  }, [])
 
   useEffect(() => {
     const ids = NAV_ITEMS.map(i => i.href)
@@ -81,6 +131,11 @@ export default function HowWeWorkPage() {
                       <li
                         key={item.href}
                         className={isPassed ? 'hww-nav-item--passed' : isActive ? 'hww-nav-item--active' : ''}
+                        onMouseEnter={() => {
+                          setHoveredItem(item.href)
+                          setScrambleTriggers(prev => ({ ...prev, [item.href]: (prev[item.href] ?? 0) + 1 }))
+                        }}
+                        onMouseLeave={() => setHoveredItem(null)}
                       >
                         <span className="hww-step-num-sm">
                           {isPassed ? (
@@ -95,9 +150,17 @@ export default function HowWeWorkPage() {
                           className="hww-step-detail"
                           onClick={e => scrollTo(e, item.href)}
                         >
-                          <strong>{item.label}</strong>
+                          <strong><ScrambleLabel text={item.label} trigger={scrambleTriggers[item.href] ?? 0} /></strong>
                           <span>{item.desc}</span>
                         </a>
+                        {hoveredItem === item.href && (
+                          <div className="hww-item-popup">
+                            <p className="hww-item-popup-heading">{item.popup.heading}</p>
+                            <ul className="hww-item-popup-list">
+                              {item.popup.bullets.map(b => <li key={b}>{b}</li>)}
+                            </ul>
+                          </div>
+                        )}
                       </li>
                     )
                   })}
