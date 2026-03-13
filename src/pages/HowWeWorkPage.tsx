@@ -1,28 +1,53 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import '../styles/how-we-work.css'
+import Banner from '../components/Banner'
+import Navbar from '../components/Navbar'
+import footerLogoSrc from '../assets/Footer-logo.svg'
+
+const NAV_ITEMS = [
+  { num: '01', label: 'The process',            desc: 'Four steps. What happens at each one.', href: 'process'  },
+  { num: '02', label: "What you'll have",        desc: 'The outcomes you can expect.',          href: 'outcomes' },
+  { num: '03', label: 'The work so far',         desc: "What we've built and how.",             href: 'proof'    },
+  { num: '04', label: 'Start the conversation',  desc: '25 minutes. No obligation.',            href: 'cta'      },
+]
 
 export default function HowWeWorkPage() {
+  const [activeSection, setActiveSection] = useState('')
+  const [passedSections, setPassedSections] = useState<Set<string>>(new Set())
+
+  useEffect(() => {
+    const ids = NAV_ITEMS.map(i => i.href)
+    const handleScroll = () => {
+      const trigger = window.scrollY + window.innerHeight * 0.45
+      let current = ''
+      ids.forEach(id => {
+        const el = document.getElementById(id)
+        if (el && trigger >= el.getBoundingClientRect().top + window.scrollY) current = id
+      })
+      setActiveSection(current)
+      const passed = new Set<string>()
+      let found = false
+      for (let i = ids.length - 1; i >= 0; i--) {
+        if (ids[i] === current) { found = true; continue }
+        if (found) passed.add(ids[i])
+      }
+      setPassedSections(passed)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault()
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   return (
     <div className="hww-page">
-
-      {/* ─── STICKY BANNER ──────────────────────────────────── */}
-      <div className="hww-top-banner">
-        Wherever you are with AI — curious, stuck, or ready to move — <a href="#cta">book a 25-minute clarity call →</a>
-      </div>
-
-      {/* ─── NAV ───────────────────────────────────────────── */}
-      <nav className="hww-nav">
-        <div className="hww-nav-inner">
-          <Link to="/" className="hww-logo">AiGENiQ</Link>
-          <ul className="hww-nav-links">
-            <li><a href="#" className="active">How We Work</a></li>
-            <li><a href="#">Case Studies</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Insights</a></li>
-          </ul>
-          <a href="#cta" className="hww-nav-cta">Book a Clarity Call</a>
-        </div>
-      </nav>
+      <Banner />
+      <Navbar />
 
       {/* ═══════════════════════════════════════════════════════
           HERO
@@ -44,39 +69,38 @@ export default function HowWeWorkPage() {
               </div>
             </div>
 
-            {/* RIGHT — page navigation card */}
+            {/* RIGHT — interactive page navigation card */}
             <div>
               <div className="hww-hero-nav-card">
                 <p className="hww-card-label">What's on this page</p>
                 <ul className="hww-page-steps-list">
-                  <li>
-                    <span className="hww-step-num-sm">01</span>
-                    <div className="hww-step-detail">
-                      <strong>The process</strong>
-                      <span>Four steps. What happens at each one.</span>
-                    </div>
-                  </li>
-                  <li>
-                    <span className="hww-step-num-sm">02</span>
-                    <div className="hww-step-detail">
-                      <strong>What you'll have at the end</strong>
-                      <span>The outcomes you can expect.</span>
-                    </div>
-                  </li>
-                  <li>
-                    <span className="hww-step-num-sm">03</span>
-                    <div className="hww-step-detail">
-                      <strong>The work so far</strong>
-                      <span>What we've built and how.</span>
-                    </div>
-                  </li>
-                  <li>
-                    <span className="hww-step-num-sm">04</span>
-                    <div className="hww-step-detail">
-                      <strong>Start the conversation</strong>
-                      <span>25 minutes. No obligation.</span>
-                    </div>
-                  </li>
+                  {NAV_ITEMS.map(item => {
+                    const isPassed = passedSections.has(item.href)
+                    const isActive = activeSection === item.href
+                    return (
+                      <li
+                        key={item.href}
+                        className={isPassed ? 'hww-nav-item--passed' : isActive ? 'hww-nav-item--active' : ''}
+                      >
+                        <span className="hww-step-num-sm">
+                          {isPassed ? (
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                              <circle cx="7" cy="7" r="7" fill="#A7F432"/>
+                              <polyline points="3.5,7 6,9.5 10.5,4.5" stroke="#000" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          ) : item.num}
+                        </span>
+                        <a
+                          href={`#${item.href}`}
+                          className="hww-step-detail"
+                          onClick={e => scrollTo(e, item.href)}
+                        >
+                          <strong>{item.label}</strong>
+                          <span>{item.desc}</span>
+                        </a>
+                      </li>
+                    )
+                  })}
                 </ul>
                 <p className="hww-card-note">You don't have to start at Step 01. Tell us where you are and we'll meet you there.</p>
               </div>
@@ -196,7 +220,7 @@ export default function HowWeWorkPage() {
       {/* ═══════════════════════════════════════════════════════
           OUTCOMES
       ═══════════════════════════════════════════════════════ */}
-      <section className="hww-outcomes-section">
+      <section className="hww-outcomes-section" id="outcomes">
         <div className="hww-container">
           <div className="hww-outcomes-header">
             <p className="hww-eyebrow" style={{ color: '#555' }}>What you'll have</p>
@@ -278,7 +302,7 @@ export default function HowWeWorkPage() {
       {/* ═══════════════════════════════════════════════════════
           PROOF SECTION
       ═══════════════════════════════════════════════════════ */}
-      <section className="hww-proof-section">
+      <section className="hww-proof-section" id="proof">
         <div className="hww-container">
 
           <div className="hww-proof-header">
@@ -394,7 +418,9 @@ export default function HowWeWorkPage() {
         <div className="hww-container">
           <div className="hww-footer-inner">
             <div>
-              <Link to="/" className="hww-footer-logo">AiGENiQ</Link>
+              <Link to="/" className="hww-footer-logo" aria-label="AiGENiQ — Home">
+                <img src={footerLogoSrc} alt="AiGENiQ" width={120} height={34} />
+              </Link>
               <p className="hww-footer-tagline">Making AI adoption stick.</p>
               <p className="hww-footer-contact">hello@aigeniq.ai<br />Colony, Jactin House<br />24 Hood St, Ancoats<br />Manchester M4 6WX</p>
             </div>

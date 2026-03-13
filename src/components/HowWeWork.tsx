@@ -1,5 +1,3 @@
-import { useFlipCard } from '../hooks/useFlipCard'
-
 interface Step {
   num: string
   name: string
@@ -39,8 +37,6 @@ const STEPS: Step[] = [
 ]
 
 export default function HowWeWork() {
-  const { openIndex, toggle } = useFlipCard()
-
   return (
     <section className="hww" id="how-we-work" aria-labelledby="hww-heading">
       <div className="container">
@@ -53,19 +49,11 @@ export default function HowWeWork() {
         </div>
 
         <div className="hww-grid">
-          {STEPS.map((step, i) => (
+          {STEPS.map((step) => (
             <article
               key={step.num}
-              className={`hww-card${openIndex === i ? ' open' : ''}`}
-              tabIndex={0}
-              data-reveal
-              data-delay={String(i + 1) as '1' | '2' | '3'}
-              aria-label={`Step ${i + 1}: ${step.name} — ${step.title}. Activate for details.`}
-              onClick={() => toggle(i)}
-              onKeyDown={e => {
-                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(i) }
-                if (e.key === 'Escape') toggle(i)
-              }}
+              className="hww-card"
+              aria-label={`${step.name} — ${step.title}`}
             >
               <div className="hww-front">
                 <div className="hww-stepnum" aria-hidden="true">{step.num}</div>

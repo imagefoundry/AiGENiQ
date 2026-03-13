@@ -16,7 +16,7 @@
   --gray-text:   #5A5750;
   --cyan:        #0DCFBA;
 
-  --container:   1360px;
+  --container:   1200px;
   --pad:         clamp(20px, 4vw, 64px);
   --nav-h:       72px;
   --radius-card: 16px;
@@ -186,7 +186,9 @@ address { font-style: normal; }
   border-bottom: 1px solid var(--gray-2);
   transition: opacity .2s;
 }
-.mob-nav a:hover { opacity: .6; }
+.mob-nav a { color: #aaa; }
+.mob-nav a:hover { color: #555; opacity: 1; }
+.mob-nav a.active { color: var(--black); font-weight: 700; }
 
 .mob-cta-link {
   margin-top: 1rem;
@@ -234,9 +236,7 @@ address { font-style: normal; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 max(var(--pad), calc((100% - var(--container)) / 2));
 }
 .nav-logo {
   display: flex;
@@ -255,15 +255,16 @@ address { font-style: normal; }
   align-items: center;
   gap: 2rem;
 }
-.nav-links a {
+.nav-links a:not(.nav-btn) {
   font-size: clamp(13px, 1vw, 15px);
   font-weight: 600;
-  color: var(--black);
+  color: #aaa;
   text-decoration: none;
-  transition: opacity .2s;
+  transition: color .2s;
   white-space: nowrap;
 }
-.nav-links a:hover { opacity: .45; }
+.nav-links a:not(.nav-btn):hover { color: #555; }
+.nav-links a.active { color: var(--black); }
 
 .nav-btn {
   background: var(--lime);
@@ -273,6 +274,7 @@ address { font-style: normal; }
   font-weight: 700 !important;
   white-space: nowrap;
   transition: background .2s, transform .15s !important;
+  text-decoration: none !important;
 }
 .nav-btn:hover {
   transform: translateY(-1px);
@@ -317,7 +319,7 @@ address { font-style: normal; }
   grid-template-columns: 55% 1fr;
   gap: 4rem;
   align-items: start;
-  max-width: var(--container);
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -340,9 +342,8 @@ address { font-style: normal; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .6px;
-  background: var(--lime);
   color: var(--black);
-  padding: 6px 16px;
+  padding: px 16px;
   border-radius: 50px;
   margin-bottom: 1.5rem;
   line-height: 1.15;
@@ -539,10 +540,7 @@ address { font-style: normal; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .8px;
-  background: var(--lime);
-  color: var(--black);
-  padding: 4px 12px;
-  border-radius: var(--radius-pill);
+  color: var(--gray-text);
   margin-bottom: 1rem;
 }
 
@@ -954,6 +952,7 @@ address { font-style: normal; }
 
 /* ── Responsive: 768px ── */
 @media (max-width: 768px) {
+  .nav-logo-img { height: 40px; }
   .nav-links { display: none; }
   .nav-ham   { display: flex; }
   .hero        { padding: 3.5rem var(--pad); }

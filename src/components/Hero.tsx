@@ -12,7 +12,8 @@ export default function Hero() {
         {/* Left: text content */}
         <div className="hero-left">
           <div className="hero-eyebrow" data-reveal aria-hidden="true">
-            <span className="eyebrow-dot" />
+            <span />
+             {/* className="eyebrow-dot" */}
             What We Do
           </div>
 
