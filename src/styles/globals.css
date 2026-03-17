@@ -1040,3 +1040,8 @@ address { font-style: normal; }
   .proof-num, .proof-quote { color: #000; }
   .footer             { background: #f4f4f4; color: #000; padding: 1rem; }
 }
+
+
+body {
+  overflow-y: scroll;
+}
