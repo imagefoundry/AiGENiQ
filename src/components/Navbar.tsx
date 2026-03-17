@@ -91,7 +91,7 @@ export default function Navbar() {
       />
 
       {/* Primary Nav */}
-      <header>
+      <header className="site-header">
         <nav
           className={`nav${scrolled ? ' scrolled' : ''}`}
           id="nav"

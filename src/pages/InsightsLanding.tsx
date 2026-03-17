@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Banner from '../components/Banner'
-import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { supabase } from '../lib/supabase'
 import type { Article } from '../types/article'
@@ -80,10 +78,6 @@ export default function InsightsLanding() {
 
   return (
     <>
-      <a href="#main-content" className="skip-link">Skip to content</a>
-      <Banner />
-      <Navbar />
-
       <main id="main-content">
         {/* Page Header */}
         <div className="ins-page-header">

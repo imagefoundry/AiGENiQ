@@ -4,7 +4,6 @@ import { supabase } from '../lib/supabase'
 import type { Article, ArticleInsert, ArticleUpdate } from '../types/article'
 import '../styles/insights.css'
 
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD ?? 'admin'
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
@@ -467,16 +466,23 @@ interface LoginProps {
 }
 
 function LoginScreen({ onLogin }: LoginProps) {
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (password === ADMIN_PASSWORD) {
-      onLogin()
+    setLoading(true)
+    setError('')
+
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
+
+    if (error) {
+      setError('Incorrect email or password.')
+      setLoading(false)
     } else {
-      setError('Incorrect password.')
-      setPassword('')
+      onLogin()
     }
   }
 
@@ -485,11 +491,22 @@ function LoginScreen({ onLogin }: LoginProps) {
       <div className="admin-login-card">
         <span className="admin-login-logo">AiGENiQ<span>.</span></span>
         <h2>Admin</h2>
-        <p className="admin-login-sub">Enter the admin password to continue.</p>
+        <p className="admin-login-sub">Sign in to continue.</p>
 
         {error && <p className="admin-error">{error}</p>}
 
         <form onSubmit={handleSubmit}>
+          <div className="admin-form-group">
+            <label className="admin-form-label" htmlFor="admin-email">Email</label>
+            <input
+              id="admin-email"
+              type="email"
+              className="admin-form-input"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
+            />
+          </div>
           <div className="admin-form-group">
             <label className="admin-form-label" htmlFor="admin-pw">Password</label>
             <input
@@ -502,8 +519,13 @@ function LoginScreen({ onLogin }: LoginProps) {
               required
             />
           </div>
-          <button type="submit" className="admin-btn admin-btn-primary" style={{ width: '100%' }}>
-            Sign in
+          <button
+            type="submit"
+            className="admin-btn admin-btn-primary"
+            style={{ width: '100%' }}
+            disabled={loading}
+          >
+            {loading ? 'Signing in…' : 'Sign in'}
           </button>
         </form>
       </div>
@@ -515,6 +537,7 @@ function LoginScreen({ onLogin }: LoginProps) {
 
 export default function AdminDashboard() {
   const [authed, setAuthed] = useState(false)
+  const [sessionChecked, setSessionChecked] = useState(false)
   const [activeTab, setActiveTab] = useState<'article' | 'video'>('article')
   const [articles, setArticles] = useState<Article[]>([])
   const [loading, setLoading] = useState(false)
@@ -540,9 +563,19 @@ export default function AdminDashboard() {
     setLoading(false)
   }
 
+  // Restore session on page load
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      if (data.session) setAuthed(true)
+      setSessionChecked(true)
+    })
+  }, [])
+
   useEffect(() => {
     if (authed) fetchArticles()
   }, [authed])
+
+  if (!sessionChecked) return null
 
   function openEdit(article: Article) {
     setEditTarget(article)
@@ -682,7 +715,7 @@ export default function AdminDashboard() {
           </Link>
           <button
             className="admin-btn admin-btn-ghost"
-            onClick={() => setAuthed(false)}
+            onClick={() => { supabase.auth.signOut(); setAuthed(false) }}
           >
             Sign out
           </button>

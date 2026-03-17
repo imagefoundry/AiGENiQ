@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import '../styles/how-we-work.css'
-import Banner from '../components/Banner'
-import Navbar from '../components/Navbar'
 import footerLogoSrc from '../assets/Footer-logo.svg'
 
 const NAV_ITEMS = [
@@ -96,8 +94,6 @@ export default function HowWeWorkPage() {
 
   return (
     <div className="hww-page">
-      <Banner />
-      <Navbar />
 
       {/* ═══════════════════════════════════════════════════════
           HERO

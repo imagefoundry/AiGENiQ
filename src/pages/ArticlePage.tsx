@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import Banner from '../components/Banner'
-import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { supabase } from '../lib/supabase'
 import type { Article } from '../types/article'
@@ -389,10 +387,6 @@ export default function ArticlePage() {
 
   return (
     <>
-      <a href="#main-content" className="skip-link">Skip to content</a>
-      <Banner />
-      <Navbar />
-
       <main id="main-content">
         {loading ? (
           <div className="art-loading" role="status" aria-live="polite">Loading…</div>
