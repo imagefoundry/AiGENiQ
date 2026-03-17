@@ -1,21 +1,22 @@
 import { useCallback } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useNavScroll } from "../hooks/useNavScroll";
 import { useMobileNav } from "../hooks/useMobileNav";
 import logoSrc from "../assets/Logo.svg";
 
 const NAV_LINKS: Array<{ label: string; href?: string; to?: string }> = [
   { label: "How We Work", to: "/how-we-work" },
+  { label: "Services", to: "/services" },
   { label: "Case Studies", href: "#proof" },
-  { label: "About", href: "#who-its-for" },
+  { label: "About Us", href: "#who-its-for" },
   { label: "Insights", href: "#insights" },
+  { label: "Contact Us", href: "#contact" },
 ];
 
 export default function Navbar() {
   const scrolled = useNavScroll();
   const { isOpen, open, close } = useMobileNav();
   const { pathname } = useLocation();
-  const navigate = useNavigate();
 
   const handleAnchorClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -34,7 +35,7 @@ export default function Navbar() {
 
   function renderLink(link: (typeof NAV_LINKS)[number], className?: string) {
     if (link.to) {
-      const isActive = pathname === link.to;
+      const isActive = pathname === link.to || pathname.startsWith(link.to + '/');
       const cls =
         [className, isActive ? "active" : ""].filter(Boolean).join(" ") ||
         undefined;
@@ -140,6 +141,13 @@ export default function Navbar() {
                 width={120}
                 height={34}
               />
+              <span className="nav-logo-sub" aria-hidden="true">
+                <span>AI strategy</span>
+                <span className="nav-logo-dot" />
+                <span>implementation</span>
+                <span className="nav-logo-dot" />
+                <span>adoption</span>
+              </span>
             </Link>
 
             {/* Hamburger */}

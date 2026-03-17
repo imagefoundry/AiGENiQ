@@ -125,7 +125,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 10px 20px;
-  border-radius: 2px;
+  border-radius: 5px;
   text-decoration: none;
 }
 .hww-nav-cta:hover { background: #96E020; }
@@ -235,7 +235,7 @@
    HERO
 ═══════════════════════════════════════════════════════ */
 .hww-hero {
-  padding: 96px 0 80px;
+  padding: var(--section-v) 0 80px;
   background: var(--gray-1);
 }
 .hww-hero-inner {
@@ -273,7 +273,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 14px 28px;
-  border-radius: 2px;
+  border-radius: 5px;
   text-decoration: none;
   display: inline-block;
   transition: background 0.15s, transform 0.15s;
@@ -292,7 +292,7 @@
 .hww-hero-nav-card {
   background: var(--white);
   border: 1px solid #E0E0E0;
-  border-radius: 4px;
+  border-radius: 16px;
   padding: 36px;
 }
 .hww-hero-nav-card .hww-card-label {
@@ -478,7 +478,7 @@
   margin-top: 20px;
   background: #A7F432;
   padding: 14px 18px;
-  border-radius: 2px;
+  border-radius: 14px;
   font-size: 14px;
   font-weight: 500;
   color: #000;

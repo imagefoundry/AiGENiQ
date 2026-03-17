@@ -32,25 +32,26 @@ export default function Footer() {
             </address>
           </div>
 
-          <nav className="foot-col" aria-label="Sitemap">
-            <h4>Sitemap</h4>
-            <a href="#who-its-for">About</a>
-            <a href="#why-aigeniq">Benefits</a>
-            <a href="#proof">Case Studies</a>
-            <a href="#how-we-work">How We Work</a>
+          <nav className="foot-col" aria-label="Services">
+            <h4>Services</h4>
+            <a href="/services#adoption">AI Adoption &amp; Strategy</a>
+            <a href="/services#automation">Workflow Automation</a>
+            <a href="/services#automation">Custom Build</a>
+            <a href="/services#coaching">AI Leadership Intensive</a>
           </nav>
 
-          <nav className="foot-col" aria-label="Contact">
-            <h4>Contact</h4>
+          <nav className="foot-col" aria-label="Company">
+            <h4>Company</h4>
+            <a href="/how-we-work">How We Work</a>
+            <a href="/#proof">Case Studies</a>
+            <a href="/#who-its-for">About Us</a>
+            <a href="/insights">Insights</a>
+          </nav>
+
+          <nav className="foot-col" aria-label="Get in Touch">
+            <h4>Get in Touch</h4>
             <a href="#cta">Book a Clarity Call</a>
             <a href="mailto:hello@aigeniq.ai">hello@aigeniq.ai</a>
-            <a href="tel:+441618706424" aria-label="Phone: +44 161 870 6424">
-              +44 (0)161 870 6424
-            </a>
-          </nav>
-
-          <nav className="foot-col" aria-label="Social media">
-            <h4>Follow</h4>
             <a
               href="https://www.linkedin.com/company/aigeniq"
               target="_blank"
@@ -58,22 +59,6 @@ export default function Footer() {
               aria-label="AiGENiQ on LinkedIn (opens in new tab)"
             >
               LinkedIn
-            </a>
-            <a
-              href="https://www.youtube.com/@aigeniq"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="AiGENiQ on YouTube (opens in new tab)"
-            >
-              YouTube
-            </a>
-            <a
-              href="https://www.instagram.com/aigeniq"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="AiGENiQ on Instagram (opens in new tab)"
-            >
-              Instagram
             </a>
           </nav>
         </div>
