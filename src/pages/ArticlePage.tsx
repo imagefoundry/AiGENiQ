@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import Footer from '../components/Footer'
 import { supabase } from '../lib/supabase'
 import type { Article } from '../types/article'
+import { useCalendar } from '../contexts/CalendarContext'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import '../styles/insights.css'
 
@@ -30,6 +31,7 @@ function getYouTubeEmbedUrl(url: string): string | null {
 
 export default function ArticlePage() {
   useScrollReveal()
+  const { openCalendar } = useCalendar()
 
   const { slug } = useParams<{ slug: string }>()
   const [article, setArticle] = useState<Article | null>(null)
@@ -97,13 +99,13 @@ export default function ArticlePage() {
     if (article?.inline_image_1) {
       out = out.replace(
         /\{\{image1\}\}/g,
-        `<img src="${article.inline_image_1}" alt="" class="art-inline-img" />`
+        `<img src="${article.inline_image_1}" alt="Article illustration" class="art-inline-img" />`
       )
     }
     if (article?.inline_image_2) {
       out = out.replace(
         /\{\{image2\}\}/g,
-        `<img src="${article.inline_image_2}" alt="" class="art-inline-img" />`
+        `<img src="${article.inline_image_2}" alt="Article illustration" class="art-inline-img" />`
       )
     }
     return out
@@ -202,7 +204,7 @@ export default function ArticlePage() {
                 <p>Want to talk through how AI fits your business?</p>
                 <h3>A 25-minute call is the fastest way to get clarity.</h3>
               </div>
-              <a href="#cta">Book a Clarity Call →</a>
+              <a href="https://calendly.com/rohit-loveimagefoundry" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call →</a>
             </div>
 
             {/* Soft closer */}
@@ -237,7 +239,7 @@ export default function ArticlePage() {
 
             <div className="art-cta-sidebar">
               <p>If this is making you think about your own business, a 25-minute call is the fastest way to get clarity.</p>
-              <a href="#cta">Book a Clarity Call</a>
+              <a href="https://calendly.com/rohit-loveimagefoundry" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
             </div>
           </aside>
         </div>
@@ -260,7 +262,7 @@ export default function ArticlePage() {
                   {r.standfirst && <p>{r.standfirst}</p>}
                   <span className="ins-arrow-link" style={{ fontSize: '13px' }}>
                     {r.type === 'video' ? 'Watch this one' : 'Read this one'}{' '}
-                    <span className="ins-arrow">→</span>
+                    <span className="ins-arrow" aria-hidden="true">→</span>
                   </span>
                 </Link>
               ))}
@@ -313,7 +315,7 @@ export default function ArticlePage() {
           </div>
 
           {article.hero_image ? (
-            <img src={article.hero_image} alt="" className="art-hero-img" />
+            <img src={article.hero_image} alt={article.title ?? 'Article hero image'} className="art-hero-img" />
           ) : (
             <div className="art-hero-img" aria-hidden="true">Hero image / infographic</div>
           )}
@@ -352,7 +354,7 @@ export default function ArticlePage() {
             )}
             <div className="art-cta-sidebar">
               <p>If this is making you think about your own business, a 25-minute call is the fastest way to get clarity.</p>
-              <a href="#cta">Book a Clarity Call</a>
+              <a href="https://calendly.com/rohit-loveimagefoundry" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
             </div>
           </aside>
         </div>
@@ -374,7 +376,7 @@ export default function ArticlePage() {
                   {r.standfirst && <p>{r.standfirst}</p>}
                   <span className="ins-arrow-link" style={{ fontSize: '13px' }}>
                     {r.type === 'video' ? 'Watch this one' : 'Read this one'}{' '}
-                    <span className="ins-arrow">→</span>
+                    <span className="ins-arrow" aria-hidden="true">→</span>
                   </span>
                 </Link>
               ))}

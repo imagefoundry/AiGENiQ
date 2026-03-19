@@ -156,7 +156,7 @@ export default function InsightsLanding() {
                       {featured.standfirst && <p>{featured.standfirst}</p>}
                       <span className="ins-arrow-link">
                         {featured.type === 'video' ? 'Watch this one' : 'Read this one'}{' '}
-                        <span className="ins-arrow">→</span>
+                        <span className="ins-arrow" aria-hidden="true">→</span>
                       </span>
                     </div>
                     {featured.hero_image ? (
@@ -193,12 +193,14 @@ export default function InsightsLanding() {
                         {article.type === 'video' && (
                           <div
                             className="ins-video-thumb"
-                            aria-hidden="true"
-                            style={
-                              getYouTubeThumbnail(article.video_url)
-                                ? { backgroundImage: `url(${getYouTubeThumbnail(article.video_url)})`, backgroundSize: 'cover', backgroundPosition: 'center' }
+                            role="img"
+                            aria-label={article.title ?? 'Video thumbnail'}
+                            style={(() => {
+                              const thumb = getYouTubeThumbnail(article.video_url) ?? article.hero_image
+                              return thumb
+                                ? { backgroundImage: `url(${thumb})`, backgroundSize: 'cover', backgroundPosition: 'center' }
                                 : undefined
-                            }
+                            })()}
                           >
                             <div className="ins-play-btn" />
                             {article.video_duration && (
@@ -225,7 +227,7 @@ export default function InsightsLanding() {
                         {article.standfirst && <p>{article.standfirst}</p>}
                         <span className="ins-arrow-link" style={{ fontSize: '13px' }}>
                           {article.type === 'video' ? 'Watch this one' : 'Read this one'}{' '}
-                          <span className="ins-arrow">→</span>
+                          <span className="ins-arrow" aria-hidden="true">→</span>
                         </span>
                       </Link>
                     ))}

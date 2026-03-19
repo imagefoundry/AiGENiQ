@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
 import { useHeroCarousel, MESSAGES } from '../hooks/useHeroCarousel'
 import StatsCard from './StatsCard'
+import { useCalendar } from '../contexts/CalendarContext'
 
 export default function Hero() {
   const activeIndex = useHeroCarousel()
+  const { openCalendar } = useCalendar()
 
   return (
     <section className="hero" aria-labelledby="hero-heading">
@@ -43,7 +45,7 @@ export default function Hero() {
           </p>
 
           <div className="hero-ctas" data-reveal data-delay="3">
-            <a href="#cta" className="btn-dark">BOOK A CLARITY CALL</a>
+            <a href="https://calendly.com/rohit-loveimagefoundry" className="btn-dark" onClick={(e) => { e.preventDefault(); openCalendar() }}>BOOK A CLARITY CALL</a>
             <Link to="/how-we-work" className="btn-ghost">SEE HOW WE WORK →</Link>
           </div>
         </div>

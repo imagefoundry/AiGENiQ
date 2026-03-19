@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 import footerLogoSrc from '../assets/Footer-logo.svg'
+import { useCalendar } from '../contexts/CalendarContext'
 
 export default function Footer() {
   const navigate = useNavigate()
+  const { openCalendar } = useCalendar()
   const year = new Date().getFullYear()
 
   return (
@@ -50,7 +52,7 @@ export default function Footer() {
 
           <nav className="foot-col" aria-label="Get in Touch">
             <h4>Get in Touch</h4>
-            <a href="#cta">Book a Clarity Call</a>
+            <a href="https://calendly.com/rohit-loveimagefoundry" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
             <a href="mailto:hello@aigeniq.ai">hello@aigeniq.ai</a>
             <a
               href="https://www.linkedin.com/company/aigeniq"

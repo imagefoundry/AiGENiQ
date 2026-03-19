@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useNavScroll } from "../hooks/useNavScroll";
 import { useMobileNav } from "../hooks/useMobileNav";
 import logoSrc from "../assets/Logo.svg";
+import { useCalendar } from "../contexts/CalendarContext";
 
 const NAV_LINKS: Array<{ label: string; href?: string; to?: string }> = [
   { label: "How We Work", to: "/how-we-work" },
@@ -16,6 +17,7 @@ export default function Navbar() {
   const scrolled = useNavScroll();
   const { isOpen, open, close } = useMobileNav();
   const { pathname } = useLocation();
+  const { openCalendar } = useCalendar();
 
   const handleAnchorClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -94,9 +96,9 @@ export default function Navbar() {
 
         {NAV_LINKS.map((link) => renderLink(link))}
         <a
-          href="#cta"
+          href="https://calendly.com/rohit-loveimagefoundry"
           className="mob-cta-link"
-          onClick={(e) => handleAnchorClick(e, "#cta")}
+          onClick={(e) => { e.preventDefault(); openCalendar() }}
         >
           BOOK A CALL
         </a>
@@ -177,9 +179,9 @@ export default function Navbar() {
             <div className="nav-links">
               {NAV_LINKS.map((link) => renderLink(link))}
               <a
-                href="#cta"
+                href="https://calendly.com/rohit-loveimagefoundry"
                 className="nav-btn"
-                onClick={(e) => handleAnchorClick(e, "#cta")}
+                onClick={(e) => { e.preventDefault(); openCalendar() }}
               >
                 BOOK A CALL
               </a>

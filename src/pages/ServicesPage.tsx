@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import '../styles/services.css'
 import Footer from '../components/Footer'
+import { useCalendar } from '../contexts/CalendarContext'
 
 export default function ServicesPage() {
+  const { openCalendar } = useCalendar()
   return (
     <>
       <main id="main-content">
@@ -254,7 +256,7 @@ export default function ServicesPage() {
         </section>
 
         {/* ── ENTRY STEPS (DARK) ──────────────────────────── */}
-        <section className="svc-entry">
+        <section className="svc-entry" id="entry">
           <div className="svc-entry-wrap">
             <div>
               <p className="svc-entry-eyebrow">How It Works</p>
@@ -313,7 +315,7 @@ export default function ServicesPage() {
               Book a 25-minute clarity call. Tell us where you are. We'll tell you honestly
               what makes sense — and what doesn't.
             </p>
-            <a href="mailto:hello@aigeniq.ai" className="svc-cta-btn">Book a Clarity Call</a>
+            <a href="https://calendly.com/rohit-loveimagefoundry" className="svc-cta-btn" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
             <p className="svc-cta-honest">
               If we can't help, we'll tell you. Either way, you'll leave with more clarity than you arrived with.
             </p>

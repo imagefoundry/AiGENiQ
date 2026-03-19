@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import '../styles/how-we-work.css'
 import footerLogoSrc from '../assets/Footer-logo.svg'
+import { useCalendar } from '../contexts/CalendarContext'
 
 const NAV_ITEMS = [
   {
@@ -51,6 +52,7 @@ function ScrambleLabel({ text, trigger }: { text: string; trigger: number }) {
 }
 
 export default function HowWeWorkPage() {
+  const { openCalendar } = useCalendar()
   const [activeSection, setActiveSection] = useState('')
   const [passedSections, setPassedSections] = useState<Set<string>>(new Set())
   const [scrambleTriggers, setScrambleTriggers] = useState<Record<string, number>>({})
@@ -110,8 +112,8 @@ export default function HowWeWorkPage() {
                 Here's exactly what working with us looks like — from the first conversation to a team that genuinely uses AI in their day-to-day work. No black box. No mystery. Just a clear process that's designed around how your business actually runs.
               </p>
               <div className="hww-hero-ctas">
-                <a href="#cta" className="hww-btn-primary">Book a Clarity Call</a>
-                <a href="#process" className="hww-btn-secondary">See the process →</a>
+                <a href="https://calendly.com/rohit-loveimagefoundry" className="hww-btn-primary" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
+                <Link to="/services#entry" className="hww-btn-secondary">See the process →</Link>
               </div>
             </div>
 
@@ -464,7 +466,7 @@ export default function HowWeWorkPage() {
               </p>
             </div>
             <div>
-              <a href="#" className="hww-btn-dark">Book a Clarity Call</a>
+              <a href="https://calendly.com/rohit-loveimagefoundry" className="hww-btn-dark" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
             </div>
           </div>
         </div>
@@ -486,31 +488,30 @@ export default function HowWeWorkPage() {
             <div className="hww-footer-col">
               <p className="hww-footer-col-title">What we do</p>
               <ul>
-                <li><a href="#">How We Work</a></li>
-                <li><a href="#">Case Studies</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Insights</a></li>
+                <li><Link to="/how-we-work">How We Work</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/insights">Insights</Link></li>
               </ul>
             </div>
             <div className="hww-footer-col">
               <p className="hww-footer-col-title">Get started</p>
               <ul>
-                <li><a href="#">Book a Clarity Call</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="https://calendly.com/rohit-loveimagefoundry" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a></li>
+                <li><Link to="/contact">Contact</Link></li>
               </ul>
             </div>
             <div className="hww-footer-col">
               <p className="hww-footer-col-title">Company</p>
               <ul>
-                <li><a href="#">AiGENiQ Ltd</a></li>
-                <li><a href="#">Company No. 16587507</a></li>
-                <li><a href="#">Privacy Policy</a></li>
+                <li><span>AiGENiQ Ltd</span></li>
+                <li><span>Company No. 16587507</span></li>
+                <li><Link to="/contact">Privacy Policy</Link></li>
               </ul>
             </div>
           </div>
           <div className="hww-footer-bottom">
             <p>© 2026 AiGENiQ Ltd. All rights reserved.</p>
-            <p><a href="#">aigeniq.ai</a></p>
+            <p>aigeniq.ai</p>
           </div>
         </div>
       </footer>

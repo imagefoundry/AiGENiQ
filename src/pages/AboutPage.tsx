@@ -1,8 +1,10 @@
 import React, { useRef, useEffect } from 'react'
 import Footer from '../components/Footer'
 import '../styles/about.css'
+import { useCalendar } from '../contexts/CalendarContext'
 
 export default function AboutPage() {
+  const { openCalendar } = useCalendar()
   const sceneRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -252,7 +254,7 @@ export default function AboutPage() {
                     rel="noopener noreferrer"
                     className="ab-yt-link"
                   >
-                    Watch on YouTube <span className="ab-arrow">→</span>
+                    Watch on YouTube <span className="ab-arrow" aria-hidden="true">→</span>
                   </a>
                 </div>
 
@@ -278,7 +280,7 @@ export default function AboutPage() {
                   A 25-minute call is enough to get clarity on where you are, what's worth doing,
                   and whether we're the right people to help.
                 </p>
-                <a href="mailto:hello@aigeniq.ai" className="ab-cta-btn">Book a Clarity Call</a>
+                <a href="https://calendly.com/rohit-loveimagefoundry" className="ab-cta-btn" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
                 <p className="ab-cta-honest">
                   If we can't help, we'll tell you. Either way, you'll leave with more clarity
                   than you arrived with.

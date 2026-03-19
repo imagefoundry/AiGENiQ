@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import Footer from '../components/Footer'
 import '../styles/contact.css'
-
-const CALENDAR_URL = ''
+import { useCalendar } from '../contexts/CalendarContext'
 
 function ContactScene() {
   const sceneRef = useRef<HTMLDivElement>(null)
@@ -119,48 +118,8 @@ function ContactScene() {
   )
 }
 
-function CalendarModal({ onClose }: { onClose: () => void }) {
-  // Close on Escape key
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    document.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-    }
-  }, [onClose])
-
-  return (
-    <div className="ct-modal-backdrop" onClick={onClose} role="dialog" aria-modal="true" aria-label="Book a clarity call">
-      <div className="ct-modal" onClick={e => e.stopPropagation()}>
-        <button className="ct-modal-close" onClick={onClose} aria-label="Close calendar">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </button>
-        <iframe
-          src={CALENDAR_URL}
-          className="ct-modal-iframe"
-          title="Book a 25-minute clarity call with AiGENiQ"
-          frameBorder="0"
-        />
-      </div>
-    </div>
-  )
-}
-
 export default function ContactPage() {
-  const [calendarOpen, setCalendarOpen] = useState(false)
-
-  function openCalendar() {
-    if (CALENDAR_URL) {
-      setCalendarOpen(true)
-    } else {
-      window.location.href = 'mailto:hello@aigeniq.ai?subject=Clarity Call Request'
-    }
-  }
+  const { openCalendar } = useCalendar()
 
   return (
     <>
@@ -262,11 +221,11 @@ export default function ContactPage() {
                   </div>
 
                   <p className="ct-privacy">
-                    Your details are used only to respond to your enquiry. We don't add you to mailing lists without permission. Read our <a href="#">privacy policy</a>.
+                    Your details are used only to respond to your enquiry. We don't add you to mailing lists without permission. Read our <a href="/contact">privacy policy</a>.
                   </p>
 
                   <button type="submit" className="ct-submit">
-                    Send your message <span className="ct-arrow">→</span>
+                    Send your message <span className="ct-arrow" aria-hidden="true">→</span>
                   </button>
 
                 </form>
@@ -286,7 +245,7 @@ export default function ContactPage() {
                     <li>If we can't help, we'll tell you</li>
                   </ul>
                   <button className="ct-calendly-btn" onClick={openCalendar}>
-                    Pick a time <span className="ct-arrow">→</span>
+                    Pick a time <span className="ct-arrow" aria-hidden="true">→</span>
                   </button>
                   <p className="ct-calendly-note">Opens a scheduling calendar. A few slots available each week.</p>
                 </div>
@@ -340,7 +299,7 @@ export default function ContactPage() {
               <h2>Not sure if we're the right fit?</h2>
               <p>That's exactly why the call exists. If we can't help, we'll tell you. Either way, you'll leave with more clarity than you arrived with.</p>
               <button className="ct-cta-btn" onClick={openCalendar}>
-                Book a Clarity Call <span className="ct-arrow">→</span>
+                Book a Clarity Call <span className="ct-arrow" aria-hidden="true">→</span>
               </button>
             </div>
           </div>
@@ -350,8 +309,6 @@ export default function ContactPage() {
 
       <Footer />
 
-      {/* ── CALENDAR MODAL ── */}
-      {calendarOpen && <CalendarModal onClose={() => setCalendarOpen(false)} />}
     </>
   )
 }

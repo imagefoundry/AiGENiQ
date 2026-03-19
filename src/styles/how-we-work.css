@@ -1,13 +1,14 @@
 /* ─── RESET ─────────────────────────────────────────── */
 .hww-page *, .hww-page *::before, .hww-page *::after { box-sizing: border-box; }
 .hww-page {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
   color: #111;
   background: #fff;
   line-height: 1.6;
 }
-.hww-page * {
+.hww-page h1, .hww-page h2, .hww-page h3,
+.hww-page h4, .hww-page h5, .hww-page h6 {
   font-family: 'Space Grotesk', sans-serif;
 }
 

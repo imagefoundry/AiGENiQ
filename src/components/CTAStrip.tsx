@@ -1,4 +1,7 @@
+import { useCalendar } from '../contexts/CalendarContext'
+
 export default function CTAStrip() {
+  const { openCalendar } = useCalendar()
   return (
     <section className="cta-strip" id="cta" aria-labelledby="cta-heading">
       <div className="cta-inner" data-reveal>
@@ -10,10 +13,9 @@ export default function CTAStrip() {
         </p>
         <p className="cta-honest">If we can't help, we'll tell you.</p>
         <a
-          href="https://calendly.com/aigeniq/clarity-call"
+          href="https://calendly.com/rohit-loveimagefoundry"
           className="btn-cta"
-          rel="noopener noreferrer"
-          target="_blank"
+          onClick={(e) => { e.preventDefault(); openCalendar() }}
         >
           Book a Clarity Call
         </a>
