@@ -10,6 +10,18 @@ type FilterType = 'all' | 'article' | 'video'
 
 const CARDS_PER_PAGE = 6
 
+function getYouTubeThumbnail(url: string | null): string | null {
+  if (!url) return null
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&?/\s]{11})/,
+  ]
+  for (const re of patterns) {
+    const match = url.match(re)
+    if (match) return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`
+  }
+  return null
+}
+
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('en-GB', {
     day: 'numeric',
@@ -172,14 +184,22 @@ export default function InsightsLanding() {
                   </div>
 
                   <div className="ins-cards-grid">
-                    {pagedItems.map((article, i) => (
+                    {pagedItems.map((article) => (
                       <Link
                         key={article.id}
                         to={`/insights/${article.slug}`}
                         className="ins-card-item"
                       >
                         {article.type === 'video' && (
-                          <div className="ins-video-thumb" aria-hidden="true">
+                          <div
+                            className="ins-video-thumb"
+                            aria-hidden="true"
+                            style={
+                              getYouTubeThumbnail(article.video_url)
+                                ? { backgroundImage: `url(${getYouTubeThumbnail(article.video_url)})`, backgroundSize: 'cover', backgroundPosition: 'center' }
+                                : undefined
+                            }
+                          >
                             <div className="ins-play-btn" />
                             {article.video_duration && (
                               <span className="ins-video-duration">

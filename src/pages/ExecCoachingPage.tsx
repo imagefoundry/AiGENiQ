@@ -1,7 +1,43 @@
+import { useEffect, useRef, useState } from 'react'
 import '../styles/exec-coaching.css'
 import Footer from '../components/Footer'
 
+function useCountUp(target: number, duration = 1400) {
+  const [value, setValue] = useState(0)
+  const ref = useRef<HTMLSpanElement>(null)
+  const started = useRef(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true
+          const start = performance.now()
+          function tick(now: number) {
+            const elapsed = now - start
+            const progress = Math.min(elapsed / duration, 1)
+            // ease-out cubic
+            const eased = 1 - Math.pow(1 - progress, 3)
+            setValue(Math.round(eased * target))
+            if (progress < 1) requestAnimationFrame(tick)
+          }
+          requestAnimationFrame(tick)
+        }
+      },
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [target, duration])
+
+  return { ref, value }
+}
+
 export default function ExecCoachingPage() {
+  const { ref: investRef, value: investValue } = useCountUp(5000)
+
   return (
     <>
       <main id="main-content">
@@ -53,7 +89,9 @@ export default function ExecCoachingPage() {
                   </li>
                   <li>
                     <span className="ec-card-key">Investment</span>
-                    <span className="ec-card-val lime">£5,000</span>
+                    <span className="ec-card-val lime" ref={investRef}>
+                      £{investValue.toLocaleString('en-GB')}
+                    </span>
                   </li>
                 </ul>
                 <p className="ec-hero-card-note">

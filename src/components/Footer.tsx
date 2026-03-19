@@ -44,7 +44,7 @@ export default function Footer() {
             <h4>Company</h4>
             <a href="/how-we-work">How We Work</a>
             <a href="/#proof">Case Studies</a>
-            <a href="/#who-its-for">About Us</a>
+            <a href="/about">About Us</a>
             <a href="/insights">Insights</a>
           </nav>
 

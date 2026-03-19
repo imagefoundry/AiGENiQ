@@ -36,29 +36,26 @@ export default function ServicesPage() {
                   <p className="svc-entry-label">Which describes you?</p>
                 </div>
 
-                <a href="#adoption" className="svc-entry-row">
+                <div className="svc-entry-row">
                   <div>
                     <p className="svc-entry-row-title">Not sure where AI fits yet</p>
                     <p className="svc-entry-row-desc">You know it matters. You haven't had the headspace to figure out what to do about it.</p>
                   </div>
-                  <span className="svc-entry-row-arrow">→</span>
-                </a>
+                </div>
 
-                <a href="#automation" className="svc-entry-row">
+                <div className="svc-entry-row">
                   <div>
                     <p className="svc-entry-row-title">You've got ideas. No clear next step.</p>
                     <p className="svc-entry-row-desc">You can see where AI could help — a process, a bottleneck, a stretched team.</p>
                   </div>
-                  <span className="svc-entry-row-arrow">→</span>
-                </a>
+                </div>
 
-                <a href="#coaching" className="svc-entry-row">
+                <div className="svc-entry-row">
                   <div>
                     <p className="svc-entry-row-title">Ready to move. Want it done right.</p>
                     <p className="svc-entry-row-desc">You've done the thinking. You know what you want. You need a team who'll build it properly.</p>
                   </div>
-                  <span className="svc-entry-row-arrow">→</span>
-                </a>
+                </div>
 
                 <div className="svc-entry-panel-footer">
                   Not sure? <strong>Book a 25-minute clarity call</strong> — we'll figure it out together.

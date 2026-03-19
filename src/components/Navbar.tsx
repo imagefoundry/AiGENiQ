@@ -7,10 +7,9 @@ import logoSrc from "../assets/Logo.svg";
 const NAV_LINKS: Array<{ label: string; href?: string; to?: string }> = [
   { label: "How We Work", to: "/how-we-work" },
   { label: "Services", to: "/services" },
-  { label: "Case Studies", href: "#proof" },
-  { label: "About Us", href: "#who-its-for" },
+  { label: "About Us", to: "/about" },
   { label: "Insights", href: "#insights" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Contact Us", to: "/contact" },
 ];
 
 export default function Navbar() {

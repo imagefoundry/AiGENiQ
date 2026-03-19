@@ -64,7 +64,7 @@
   text-transform: uppercase;
   letter-spacing: 0.07em;
   padding: 15px 30px;
-  border-radius: 5px;
+  border-radius: 25px;
   text-decoration: none;
   display: inline-block;
   transition: background 0.15s, transform 0.15s;
@@ -722,7 +722,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 16px 24px;
-  border-radius: 5px;
+  border-radius: 25px;
   text-decoration: none;
   text-align: center;
   transition: background 0.15s, transform 0.15s;
@@ -863,7 +863,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 16px 32px;
-  border-radius: 5px;
+  border-radius: 25px;
   text-decoration: none;
   display: inline-block;
   transition: background 0.15s, transform 0.15s;

@@ -20,7 +20,7 @@
   --pad:         clamp(20px, 4vw, 64px);
   --nav-h:       88px;
   --radius-card: 16px;
-  --radius-pill: 999px;
+  --radius-pill: 25px;
 
   --section-v:   clamp(3rem, 5vw, 4.5rem);
 
@@ -291,7 +291,7 @@ address { font-style: normal; }
   background: var(--lime);
   color: var(--black) !important;
   padding: 9px 20px;
-  border-radius: 5px;
+  border-radius: 25px;
   font-size: clamp(12px, 1vw, 14px) !important;
   font-weight: 700 !important;
   white-space: nowrap;
@@ -427,7 +427,7 @@ address { font-style: normal; }
   background-color: var(--lime);
   color: var(--black);
   padding: 14px 40px;
-  border-radius: 5px;
+  border-radius: 25px;
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
@@ -827,7 +827,7 @@ address { font-style: normal; }
 .why::before {
   content: 'AiGENiQ';
   position: absolute;
-  bottom: -2rem; right: -1rem;
+  bottom: -2rem; right: 1rem;
   font-size: 14rem;
   font-weight: 700;
   color: rgba(0,0,0,.025);
