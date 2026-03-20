@@ -23,11 +23,15 @@ export function useHeroCarousel(): number {
 
     if (prefersReduced || MESSAGES.length <= 1) return
 
-    const id = setInterval(() => {
-      setIndex(prev => (prev + 1) % MESSAGES.length)
-    }, INTERVAL_MS)
+    // Delay start until after first paint to avoid blocking LCP
+    const startDelay = setTimeout(() => {
+      const id = setInterval(() => {
+        setIndex(prev => (prev + 1) % MESSAGES.length)
+      }, INTERVAL_MS)
+      return () => clearInterval(id)
+    }, 3000)
 
-    return () => clearInterval(id)
+    return () => clearTimeout(startDelay)
   }, [])
 
   return index

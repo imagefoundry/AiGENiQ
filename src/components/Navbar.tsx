@@ -23,7 +23,10 @@ export default function Navbar() {
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
       if (href === "#") return;
       const target = document.querySelector(href);
-      if (!target) return;
+      if (!target) {
+        if (isOpen) close();
+        return;
+      }
       e.preventDefault();
       const delay = isOpen ? 380 : 0;
       if (isOpen) close();
@@ -96,7 +99,7 @@ export default function Navbar() {
 
         {NAV_LINKS.map((link) => renderLink(link))}
         <a
-          href="https://calendly.com/rohit-loveimagefoundry"
+          href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call"
           className="mob-cta-link"
           onClick={(e) => { e.preventDefault(); openCalendar() }}
         >
@@ -179,7 +182,7 @@ export default function Navbar() {
             <div className="nav-links">
               {NAV_LINKS.map((link) => renderLink(link))}
               <a
-                href="https://calendly.com/rohit-loveimagefoundry"
+                href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call"
                 className="nav-btn"
                 onClick={(e) => { e.preventDefault(); openCalendar() }}
               >

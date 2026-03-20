@@ -826,6 +826,9 @@
   padding: 64px var(--pad) 40px;
   border-top: 1px solid #222;
 }
+.hww-footer .hww-container {
+  padding: 0 var(--pad);
+}
 .hww-footer-inner {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1fr;
@@ -870,7 +873,8 @@
   margin: 0;
   padding: 0;
 }
-.hww-footer-col a {
+.hww-footer-col a,
+.hww-footer-col span {
   font-size: 14px;
   color: #888;
   text-decoration: none;
@@ -936,6 +940,7 @@
   .hww-credibility-strip     { padding: 1.5rem; }
   .hww-case-stat-num         { font-size: 36px; }
   .hww-cred-stat-num         { font-size: 40px; }
+  .hww-footer                { padding: 2rem var(--pad) 1.5rem; }
   .hww-footer-inner          { grid-template-columns: 1fr; gap: 2rem; }
   .hww-footer-bottom         { flex-direction: column; gap: 0.5rem; text-align: center; }
 }

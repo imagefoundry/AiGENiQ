@@ -315,7 +315,7 @@ export default function ServicesPage() {
               Book a 25-minute clarity call. Tell us where you are. We'll tell you honestly
               what makes sense — and what doesn't.
             </p>
-            <a href="https://calendly.com/rohit-loveimagefoundry" className="svc-cta-btn" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
+            <a href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call" className="svc-cta-btn" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
             <p className="svc-cta-honest">
               If we can't help, we'll tell you. Either way, you'll leave with more clarity than you arrived with.
             </p>

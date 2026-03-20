@@ -13,7 +13,7 @@ export default function CTAStrip() {
         </p>
         <p className="cta-honest">If we can't help, we'll tell you.</p>
         <a
-          href="https://calendly.com/rohit-loveimagefoundry"
+          href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call"
           className="btn-cta"
           onClick={(e) => { e.preventDefault(); openCalendar() }}
         >

@@ -237,9 +237,9 @@
   grid-template-columns: 1fr auto;
   gap: 40px;
   align-items: center;
-  background: #000;
+  background: var(--lime, #A7F432);
   padding: 40px 44px;
-  border: 1px solid #000;
+  border: 1px solid var(--lime, #A7F432);
   border-radius: 25px;
 }
 .svc-coaching-label {
@@ -247,28 +247,28 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--lime, #A7F432);
+  color: #000;
   margin-bottom: 10px;
 }
 .svc-coaching-title {
   font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: #000;
   margin-bottom: 10px;
   line-height: 1.2;
 }
 .svc-coaching-body {
   font-size: 15px;
-  color: #888;
+  color: #333;
   line-height: 1.6;
   max-width: 520px;
 }
 .svc-coaching-right { text-align: center; flex-shrink: 0; }
 .svc-coaching-cta {
   display: block;
-  background: var(--lime, #A7F432);
-  color: #000;
+  background: #000;
+  color: #fff;
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
@@ -280,10 +280,10 @@
   margin-bottom: 10px;
   transition: background 0.15s;
 }
-.svc-coaching-cta:hover { background: #96E020; }
+.svc-coaching-cta:hover { background: #222; }
 .svc-coaching-hint {
   font-size: 12px;
-  color: #555;
+  color: #333;
   font-weight: 500;
   letter-spacing: 0.04em;
 }

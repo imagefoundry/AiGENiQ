@@ -244,7 +244,7 @@ export default function ContactPage() {
                     <li>Anshul-led — not delegated to a junior</li>
                     <li>If we can't help, we'll tell you</li>
                   </ul>
-                  <button className="ct-calendly-btn" onClick={openCalendar}>
+                  <button type="button" className="ct-calendly-btn" onClick={openCalendar}>
                     Pick a time <span className="ct-arrow" aria-hidden="true">→</span>
                   </button>
                   <p className="ct-calendly-note">Opens a scheduling calendar. A few slots available each week.</p>
@@ -298,7 +298,7 @@ export default function ContactPage() {
             <div className="ct-cta-inner">
               <h2>Not sure if we're the right fit?</h2>
               <p>That's exactly why the call exists. If we can't help, we'll tell you. Either way, you'll leave with more clarity than you arrived with.</p>
-              <button className="ct-cta-btn" onClick={openCalendar}>
+              <button type="button" className="ct-cta-btn" onClick={openCalendar}>
                 Book a Clarity Call <span className="ct-arrow" aria-hidden="true">→</span>
               </button>
             </div>

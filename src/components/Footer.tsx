@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import footerLogoSrc from '../assets/Footer-logo.svg'
 import { useCalendar } from '../contexts/CalendarContext'
 
@@ -36,23 +36,23 @@ export default function Footer() {
 
           <nav className="foot-col" aria-label="Services">
             <h4>Services</h4>
-            <a href="/services#adoption">AI Adoption &amp; Strategy</a>
-            <a href="/services#automation">Workflow Automation</a>
-            <a href="/services#automation">Custom Build</a>
-            <a href="/services#coaching">AI Leadership Intensive</a>
+            <Link to="/services#adoption">AI Adoption &amp; Strategy</Link>
+            <Link to="/services#automation">Workflow Automation</Link>
+            <Link to="/services#automation">Custom Build</Link>
+            <Link to="/services#coaching">AI Leadership Intensive</Link>
           </nav>
 
           <nav className="foot-col" aria-label="Company">
             <h4>Company</h4>
-            <a href="/how-we-work">How We Work</a>
-            <a href="/#proof">Case Studies</a>
-            <a href="/about">About Us</a>
-            <a href="/insights">Insights</a>
+            <Link to="/how-we-work">How We Work</Link>
+            <Link to="/#proof">Case Studies</Link>
+            <Link to="/about">About Us</Link>
+            <Link to="/insights">Insights</Link>
           </nav>
 
           <nav className="foot-col" aria-label="Get in Touch">
             <h4>Get in Touch</h4>
-            <a href="https://calendly.com/rohit-loveimagefoundry" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
+            <a href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
             <a href="mailto:hello@aigeniq.ai">hello@aigeniq.ai</a>
             <a
               href="https://www.linkedin.com/company/aigeniq"

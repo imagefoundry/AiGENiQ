@@ -112,7 +112,7 @@ export default function HowWeWorkPage() {
                 Here's exactly what working with us looks like — from the first conversation to a team that genuinely uses AI in their day-to-day work. No black box. No mystery. Just a clear process that's designed around how your business actually runs.
               </p>
               <div className="hww-hero-ctas">
-                <a href="https://calendly.com/rohit-loveimagefoundry" className="hww-btn-primary" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
+                <a href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call" className="hww-btn-primary" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
                 <Link to="/services#entry" className="hww-btn-secondary">See the process →</Link>
               </div>
             </div>
@@ -466,7 +466,7 @@ export default function HowWeWorkPage() {
               </p>
             </div>
             <div>
-              <a href="https://calendly.com/rohit-loveimagefoundry" className="hww-btn-dark" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
+              <a href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call" className="hww-btn-dark" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
             </div>
           </div>
         </div>
@@ -496,7 +496,7 @@ export default function HowWeWorkPage() {
             <div className="hww-footer-col">
               <p className="hww-footer-col-title">Get started</p>
               <ul>
-                <li><a href="https://calendly.com/rohit-loveimagefoundry" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a></li>
+                <li><a href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a></li>
                 <li><Link to="/contact">Contact</Link></li>
               </ul>
             </div>

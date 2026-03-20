@@ -45,7 +45,7 @@ export default function Hero() {
           </p>
 
           <div className="hero-ctas" data-reveal data-delay="3">
-            <a href="https://calendly.com/rohit-loveimagefoundry" className="btn-dark" onClick={(e) => { e.preventDefault(); openCalendar() }}>BOOK A CLARITY CALL</a>
+            <a href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call" className="btn-dark" onClick={(e) => { e.preventDefault(); openCalendar() }}>BOOK A CLARITY CALL</a>
             <Link to="/how-we-work" className="btn-ghost">SEE HOW WE WORK →</Link>
           </div>
         </div>

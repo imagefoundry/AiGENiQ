@@ -236,7 +236,7 @@ export default function InsightsLanding() {
                   {filteredGrid.length > CARDS_PER_PAGE && (
                     <div className="ins-load-more-wrap">
                       {!paginated ? (
-                        <button className="ins-btn-load-more" onClick={handleLoadMore}>
+                        <button type="button" className="ins-btn-load-more" onClick={handleLoadMore}>
                           Load more
                         </button>
                       ) : (

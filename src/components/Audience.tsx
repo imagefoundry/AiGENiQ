@@ -1,6 +1,6 @@
-import curiousImg from '../assets/curious-but-cautious.jpg'
-import clearImg from '../assets/clear-on-path.jpg'
-import readyImg from '../assets/ready-to-implement.jpg'
+import curiousImg from '../assets/curious-but-cautious.webp'
+import clearImg from '../assets/clear-on-path.webp'
+import readyImg from '../assets/ready-to-implement.webp'
 
 interface AudienceItem {
   num: string

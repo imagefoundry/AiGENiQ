@@ -99,13 +99,13 @@ export default function ArticlePage() {
     if (article?.inline_image_1) {
       out = out.replace(
         /\{\{image1\}\}/g,
-        `<img src="${article.inline_image_1}" alt="Article illustration" class="art-inline-img" />`
+        `<img src="${article.inline_image_1}" alt="Article illustration" class="art-inline-img" loading="lazy" width="800" height="450" />`
       )
     }
     if (article?.inline_image_2) {
       out = out.replace(
         /\{\{image2\}\}/g,
-        `<img src="${article.inline_image_2}" alt="Article illustration" class="art-inline-img" />`
+        `<img src="${article.inline_image_2}" alt="Article illustration" class="art-inline-img" loading="lazy" width="800" height="450" />`
       )
     }
     return out
@@ -204,7 +204,7 @@ export default function ArticlePage() {
                 <p>Want to talk through how AI fits your business?</p>
                 <h3>A 25-minute call is the fastest way to get clarity.</h3>
               </div>
-              <a href="https://calendly.com/rohit-loveimagefoundry" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call →</a>
+              <a href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call →</a>
             </div>
 
             {/* Soft closer */}
@@ -239,7 +239,7 @@ export default function ArticlePage() {
 
             <div className="art-cta-sidebar">
               <p>If this is making you think about your own business, a 25-minute call is the fastest way to get clarity.</p>
-              <a href="https://calendly.com/rohit-loveimagefoundry" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
+              <a href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
             </div>
           </aside>
         </div>
@@ -315,7 +315,7 @@ export default function ArticlePage() {
           </div>
 
           {article.hero_image ? (
-            <img src={article.hero_image} alt={article.title ?? 'Article hero image'} className="art-hero-img" />
+            <img src={article.hero_image} alt={article.title ?? 'Article hero image'} className="art-hero-img" width="1200" height="630" loading="eager" decoding="async" />
           ) : (
             <div className="art-hero-img" aria-hidden="true">Hero image / infographic</div>
           )}
@@ -354,7 +354,7 @@ export default function ArticlePage() {
             )}
             <div className="art-cta-sidebar">
               <p>If this is making you think about your own business, a 25-minute call is the fastest way to get clarity.</p>
-              <a href="https://calendly.com/rohit-loveimagefoundry" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
+              <a href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
             </div>
           </aside>
         </div>

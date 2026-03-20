@@ -60,8 +60,8 @@ export default function ExecCoachingPage() {
                 who are ready to stop meaning to get on top of AI — and actually do it.
               </p>
               <div className="ec-hero-ctas">
-                <a href="https://calendly.com/rohit-loveimagefoundry" className="ec-btn-lime" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book Your Day →</a>
-                <a href="#ec-process" className="ec-btn-ghost">Read how it works →</a>
+                <a href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call" className="ec-btn-lime" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book Your Day →</a>
+                <a href="#ec-process" className="ec-btn-ghost" onClick={(e) => { e.preventDefault(); document.getElementById('ec-process')?.scrollIntoView({ behavior: 'smooth' }) }}>Read how it works →</a>
               </div>
             </div>
 
@@ -457,10 +457,10 @@ export default function ExecCoachingPage() {
                     </div>
                   </li>
                 </ul>
-                <a href="https://calendly.com/rohit-loveimagefoundry" className="ec-inv-book-cta" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book Your Day →</a>
+                <a href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call" className="ec-inv-book-cta" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book Your Day →</a>
                 <p className="ec-inv-book-note">
                   Or{' '}
-                  <a href="https://calendly.com/rohit-loveimagefoundry" onClick={(e) => { e.preventDefault(); openCalendar() }}>start with a 25-minute clarity call</a>
+                  <a href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call" onClick={(e) => { e.preventDefault(); openCalendar() }}>start with a 25-minute clarity call</a>
                   {' '}if you'd like to talk it through first.
                 </p>
               </div>
@@ -497,7 +497,7 @@ export default function ExecCoachingPage() {
                 </ul>
                 <div className="ec-qualifier-hint">
                   Not sure?{' '}
-                  <a href="https://calendly.com/rohit-loveimagefoundry" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a 25-minute clarity call.</a>
+                  <a href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a 25-minute clarity call.</a>
                   {' '}We'll tell you honestly whether this is the right fit — and if not, what probably is.
                 </div>
               </div>
@@ -517,7 +517,7 @@ export default function ExecCoachingPage() {
                 Book your place or start with a clarity call. Either way, you'll leave knowing
                 exactly what to do next.
               </p>
-              <a href="https://calendly.com/rohit-loveimagefoundry" className="ec-cta-btn" onClick={(e) => { e.preventDefault(); openCalendar() }}>
+              <a href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call" className="ec-cta-btn" onClick={(e) => { e.preventDefault(); openCalendar() }}>
                 Book Your Day — £5,000 →
               </a>
               <p className="ec-cta-honest">

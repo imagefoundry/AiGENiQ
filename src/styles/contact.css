@@ -532,7 +532,7 @@
 
 .ct-call-card {
   background: #000;
-  border-radius: 2px;
+  border-radius: 25px;
   padding: 36px 32px;
   color: #fff;
   position: relative;
@@ -637,7 +637,7 @@
 
 .ct-expect {
   background: #ECECEC;
-  border-radius: 2px;
+  border-radius: 25px;
   padding: 28px;
 }
 

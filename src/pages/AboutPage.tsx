@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import Footer from '../components/Footer'
 import '../styles/about.css'
 import { useCalendar } from '../contexts/CalendarContext'
+import anshulImg from '../assets/Anshul - Caricature - Clean.webp'
 
 export default function AboutPage() {
   const { openCalendar } = useCalendar()
@@ -213,7 +214,7 @@ export default function AboutPage() {
 
               <div className="ab-founder-photo-col">
                 <div className="ab-founder-photo">
-                  <img src="./src/assets/Anshul - Caricature - Clean.jpg" alt="Anshul Kapoor, Founder of AiGENiQ" />
+                  <img src={anshulImg} alt="Anshul Kapoor, Founder of AiGENiQ" width="400" height="400" loading="lazy" />
                 </div>
               </div>
 
@@ -249,7 +250,7 @@ export default function AboutPage() {
                     for business owners figuring out where AI fits. No agenda. Just useful.
                   </p>
                   <a
-                    href="https://www.youtube.com/@aigeniq"
+                    href="https://www.youtube.com/@AK-on-AI"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="ab-yt-link"
@@ -280,7 +281,7 @@ export default function AboutPage() {
                   A 25-minute call is enough to get clarity on where you are, what's worth doing,
                   and whether we're the right people to help.
                 </p>
-                <a href="https://calendly.com/rohit-loveimagefoundry" className="ab-cta-btn" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
+                <a href="https://calendly.com/anshul-aigeniq/25-minute-discovery-call" className="ab-cta-btn" onClick={(e) => { e.preventDefault(); openCalendar() }}>Book a Clarity Call</a>
                 <p className="ab-cta-honest">
                   If we can't help, we'll tell you. Either way, you'll leave with more clarity
                   than you arrived with.
